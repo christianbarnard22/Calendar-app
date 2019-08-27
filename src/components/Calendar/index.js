@@ -12,6 +12,7 @@ import {
 } from "date-fns";
 
 import { CalendarHeader } from "./Header";
+import Month from "./Month";
 // If I had more time I would have worked on a mobile view for this but I decided
 // that the functionality of the calendar needed to be completed first. For mobile
 // I would have made the width 100% this would be displayed edge to edge on smaller screens.
@@ -78,6 +79,7 @@ function Calendar({ month, year }) {
           nextMonth={nextMonth}
         />
       </div>
+      <Month currentMonth={currentMonth} events={events} />
     </section>
   );
 }
