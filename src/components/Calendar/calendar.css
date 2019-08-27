@@ -1,0 +1,71 @@
+.month {
+  margin: 20px auto;
+}
+
+.month-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.day-name-container,
+.week-container {
+  display: flex;
+}
+
+.week-container {
+  height: 100px;
+}
+
+.day-name-container {
+  height: 40px;
+}
+
+.day {
+  border: 1px solid #000;
+  text-align: left;
+  padding: 5px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.week-day {
+  height: 100px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.icon {
+  font-family: "Material Icons", serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  height: 50px;
+  width: 80px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+}
+.not-this-month {
+  background: #dcdcdc;
+}
+.event-info {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.day-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
