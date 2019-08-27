@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // I decided to use date-fns because I could load only what I need,
 // it is immutable, and light weight.
 import {
@@ -13,6 +13,7 @@ import {
 
 import { CalendarHeader } from "./Header";
 import Month from "./Month";
+import { eventsRequest } from "./api";
 // If I had more time I would have worked on a mobile view for this but I decided
 // that the functionality of the calendar needed to be completed first. For mobile
 // I would have made the width 100% this would be displayed edge to edge on smaller screens.
@@ -60,7 +61,19 @@ function getValidDate(month, year) {
 function Calendar({ month, year }) {
   let initializedDate = getValidDate(month, year);
   const [currentMonth, setCurrentMonth] = useState(initializedDate);
-
+  const [events, setEvents] = useState(null);
+  useEffect(() => {
+    // A request is made each time the next and previous buttons
+    // are clicked. I built this to accept a start and end date to pass to the server.
+    // Here I decided to return just the current month's data but I'd probaly use a wider date
+    // range to avoid having to make frequent requests to the server
+    eventsRequest(
+      format(startOfWeek(startOfMonth(currentMonth)), "T"),
+      format(endOfWeek(endOfMonth(currentMonth)), "T")
+    ).then(releases => {
+      setEvents(releases);
+    });
+  }, [currentMonth]);
   let newcurrentmonth = currentMonth;
 
   const prevMonth = subMonths(currentMonth, 1);
